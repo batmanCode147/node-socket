@@ -1,0 +1,20 @@
+{
+    "name": "chappachat",
+    "version": "0.0.1",
+    "description": "cool chat to find new peoples",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js"
+    },
+    "author": "Ferdinand Schimana & Manuel Obertlik",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.17.1",
+        "moniker": "^0.1.2",
+        "socket.io": "^2.3.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.4"
+    }
+}

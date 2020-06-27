@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <title>ChappaChat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <form id="chat-form" action="#">
+        <div class="container">
+            <ul id="messages">
+            </ul>
+
+            <div class="chat_input">
+                <input id="info-button" type="button" value="ℹ️">
+                <input id="m" autocomplete="off" />
+                <input type="submit" value="Senden" />
+            </div>
+
+            <div class="buttons">
+                <button class="reaction-btn" value="👏">👏</button>
+                <button class="reaction-btn" value="🛑">🛑</button>
+                <button class="reaction-btn" value="👍">👍</button>
+                <button class="reaction-btn" value="👎">👎</button>
+            </div>
+        </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chat.js"></script>
+</body>
+
+</html>
