@@ -22,11 +22,6 @@ function remove_from(users, socket) {
     users.splice(idx, 1);
 }
 
-function botMessage(bot, msg) {
-    bot.message = msg;
-    return bot;
-}
-
 const htmlEscapes = {
     "&": "&amp;",
     "<": "&lt;",
@@ -46,12 +41,20 @@ function escapeHtml(string) {
     return string.replace(reUnescapedHtml, escapeHtmlChar);
 }
 
+function IntTwoChars(num) {
+    return (`0${num}`).slice(-2);
+}
+
+function getTimeStamp() {
+    let time = new Date();
+    let hours = IntTwoChars(time.getHours());
+    let minutes = IntTwoChars(time.getMinutes());
+    return `${hours}:${minutes}`;
+}
+
 module.exports = {
     randomColorFromString,
     remove_from,
-    botMessage,
-    escapeHtmlChar,
     escapeHtml,
-    htmlEscapes,
-    reUnescapedHtml
+    getTimeStamp
 };

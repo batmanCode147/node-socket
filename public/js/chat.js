@@ -6,8 +6,6 @@ let list = document.getElementById('messages');
 let infoBtn = document.getElementById('info-button');
 let buttons = document.querySelectorAll('.reaction-btn');
 
-console.log(infoBtn);
-
 form.addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -23,7 +21,7 @@ infoBtn.addEventListener('click', () => {
     let li = document.createElement('li');
 
     li.className = 'chappa-bot';
-    li.innerHTML = `<p>type [ /name *new name* ] to change your name!</p>`;
+    li.innerHTML = `<p>type /name *new name* to change your name!</p>`;
     list.appendChild(li);
     list.scrollTop = list.scrollHeight;
 });
@@ -37,12 +35,18 @@ let displayMsg = (data) => {
     let li = document.createElement('li');
 
     if (data.role == "bot") {
-        li.className = 'chappa-bot';
-        li.innerHTML = `<p>${data.message}</p>`;
+        let userCount = document.getElementById('current-users');
+        userCount.innerHTML = `<p>🟢 ${data.message}</p>`;
     } else {
+        if (data.socketID == socket.id)
+            li.className = "client-msg";
+
         li.innerHTML = `<p class="msg-meta" style="background-color:${data.color};">${data.name}:</p>\n
         <br>\n
-        <p class="msg">${data.message}</p>`;
+        <div class="msg-container">
+        <p class="msg">${data.message}</p>\n
+        <p class="msg-time">${data.time} Uhr</p>\n
+        </div>`;
     }
 
     list.appendChild(li);

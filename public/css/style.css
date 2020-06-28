@@ -1,7 +1,8 @@
 body {
     font: 16px Helvetica, Arial;
     box-sizing: border-box;
-    background-color: blueviolet;
+    background-image: url(../assets/background.jpg);
+    background-size: cover;
     margin: 0;
     padding: 0;
 }
@@ -9,7 +10,6 @@ body {
 .container {
     width: 100%;
     max-width: 1000px;
-    /* padding: 0 10px; */
     margin: 0 auto;
     position: relative;
     display: flex;
@@ -41,6 +41,7 @@ body {
     border: 0;
     padding: 10px;
     flex: 1;
+    font-size: 1.0em;
 }
 
 .chat_input input[type=submit] {
@@ -84,11 +85,17 @@ body {
 .msg {
     margin: 0;
     display: inline-block;
-    background: white;
-    padding: 12px;
-    border-radius: 5px;
-    max-width: 50%;
+    padding: 12px 12px 0px 12px;
     line-height: 1.5em;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.client-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .msg-meta {
@@ -99,6 +106,22 @@ body {
     display: inline-block;
     padding: 4px 20px;
     margin: 10px 0;
+}
+
+.msg-time {
+    font-size: 0.8em;
+    color: gray;
+    margin: 0;
+    text-align: right;
+    padding: 5px 10px;
+}
+
+.msg-container {
+    background: #DCF8C6;
+    border-radius: 5px;
+    max-width: 50%;
+    min-width: 90px;
+    display: inline-block;
 }
 
 .chappa-bot p {
@@ -114,4 +137,27 @@ body {
     border: none;
     width: 60px;
     font-size: 40px;
+}
+
+.container-msg {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+#current-users p {
+    margin: 0 auto;
+    background-color: #82e0ff;
+    color: black;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    display: block;
+    padding: 5px 15px;
+    width: 180px;
+    text-align: center;
+    position: fixed;
+    z-index: 2;
+    left: 50%;
+    transform: translate(-50%, 0);
 }

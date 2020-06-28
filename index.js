@@ -8,11 +8,8 @@ const moniker = require('moniker');
 const {
     randomColorFromString,
     remove_from,
-    botMessage,
-    escapeHtmlChar,
     escapeHtml,
-    htmlEscapes,
-    reUnescapedHtml
+    getTimeStamp
 } = require('./helper');
 
 var users = [];
@@ -31,17 +28,17 @@ io.on('connection', function(socket) {
         socketID: socket.id,
         name: randomName.choose(),
         message: null,
-        color: "crimson"
+        color: "crimson",
+        time: null
     };
     user.color = randomColorFromString(user.name);
+    users.push(user);
 
     var bot = {
         role: "bot",
-        message: null
+        message: `${users.length} chappas connected`
     }
-
-    users.push(user);
-    io.emit('chat message', botMessage(bot, (users.length) + " chappas connected"));
+    io.emit('chat message', bot);
 
     socket.on('chat message', function(msg) {
         if (msg.slice(0, 5) == "/name" && msg.slice(6)) {
@@ -50,6 +47,7 @@ io.on('connection', function(socket) {
         } else {
             console.log(`got message '${msg}', broadcasting to all`);
             user.message = escapeHtml(msg);
+            user.time = getTimeStamp();
             io.emit('chat message', user);
         }
     });
@@ -57,12 +55,13 @@ io.on('connection', function(socket) {
     socket.on('reaction', function(msg) {
         console.log(`got reaction, broadcasting to all`);
         user.message = msg;
+        user.time = getTimeStamp();
         io.emit('reaction', user);
     });
 
     socket.on('disconnect', function() {
         remove_from(users, socket);
-        io.emit('chat message', botMessage(bot, (users.length) + " chappas connected"));
+        io.emit('chat message', bot);
         console.log('user disconnected');
     });
 });
