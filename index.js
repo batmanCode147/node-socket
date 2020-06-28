@@ -36,9 +36,15 @@ io.on('connection', function(socket) {
 
     var bot = {
         role: "bot",
-        message: `${users.length} chappas connected`
+        message: `🟢 ${users.length} users connected`
     }
+
     io.emit('chat message', bot);
+
+    if (users.length == 1) {
+        bot.message = "🔴 only you in chat"
+        io.emit('chat message', bot);
+    }
 
     socket.on('chat message', function(msg) {
         if (msg.slice(0, 5) == "/name" && msg.slice(6)) {

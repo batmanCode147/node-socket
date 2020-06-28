@@ -98,6 +98,10 @@ body {
     align-items: flex-end;
 }
 
+.test div {
+    background: #DCF8C6;
+}
+
 .msg-meta {
     font-size: 12px;
     /* background-color: crimson; */
@@ -117,7 +121,7 @@ body {
 }
 
 .msg-container {
-    background: #DCF8C6;
+    background: white;
     border-radius: 5px;
     max-width: 50%;
     min-width: 90px;

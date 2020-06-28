@@ -36,10 +36,11 @@ let displayMsg = (data) => {
 
     if (data.role == "bot") {
         let userCount = document.getElementById('current-users');
-        userCount.innerHTML = `<p>🟢 ${data.message}</p>`;
+        userCount.innerHTML = `<p>${data.message}</p>`;
     } else {
-        if (data.socketID == socket.id)
-            li.className = "client-msg";
+        if (data.socketID == socket.id) {
+            li.className = "client-msg test";
+        }
 
         li.innerHTML = `<p class="msg-meta" style="background-color:${data.color};">${data.name}:</p>\n
         <br>\n
